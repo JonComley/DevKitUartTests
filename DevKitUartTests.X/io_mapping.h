@@ -21,3 +21,5 @@ limitations under the License.
 #define LED_BUTTON_PRESSED LED_D4
 
 #define BUTTON_DEMO BUTTON_S3
+
+#define UART6_DEMO   UART6

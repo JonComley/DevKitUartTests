@@ -25,9 +25,11 @@ limitations under the License.
 #include "buttons.h"
 #include "leds.h"
 #include "rtcc.h"
- 
-#include "io_mapping.h"
+#include "uart.h"
 
+#include "io_mapping.h"
+#define    FCY    8000000UL    // Instruction cycle frequency, Hz - required for __delayXXX() to work
+#include <libpic30.h>        // __delayXXX() functions macros defined here
 // *****************************************************************************
 // *****************************************************************************
 // Section: File Scope Variables and Functions
@@ -55,13 +57,19 @@ int main ( void )
     LED_Enable ( LED_BLINK_ALIVE );
     LED_Enable ( LED_BUTTON_PRESSED );
 
-    BUTTON_Enable ( BUTTON_DEMO );
+    //BUTTON_Enable ( BUTTON_DEMO );
     
+    Uart_Enable( UART6_DEMO );
+//    while(1)
+//    {
+//        UART5PutChar('a');
+//        __delay_ms(200);
+//    }        
     /* Get a timer event once every 100ms for the blink alive. */
     TIMER_SetConfiguration ( TIMER_CONFIGURATION_1MS );
     TIMER_RequestTick( &TimerEventHandler, 100 );
     
-    /* The TIMER_1MS configuration should come before the RTCC initialization as
+    /* The TIMER_1MS configuration should come before the RTCC initialisation as
      * there are some processor modules that require the TIMER_1MS module to be
      * configured before the RTCC module, as the RTCC module is emulated using
      * the TIMER_1MS module. */
@@ -77,6 +85,11 @@ int main ( void )
     
     while ( 1 )
     {
+        if(IFS6bits.U5RXIF == 1) 
+        {
+            UART5PutChar(UART5GetChar());
+        }
+        
         adcResult = ADC_Read10bit( ADC_CHANNEL_POTENTIOMETER );
 
         RTCC_TimeGet( &time );

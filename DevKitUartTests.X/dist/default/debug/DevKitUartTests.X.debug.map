@@ -4,9 +4,16 @@ Tool Name:
   c:\program files (x86)\microchip\xc16\v1.36\bin\bin\..\bin/elf-ld.exe
 
 Command:
+  -TC:\\Users\\JONATH~1.COM\\AppData\\Local\\Temp\\tmp00001e00.00 \
+  -TC:\\Users\\JONATH~1.COM\\AppData\\Local\\Temp\\tmp00001e00.01 \
+  -TC:\\Users\\JONATH~1.COM\\AppData\\Local\\Temp\\tmp00001e00.02 \
+  -TC:\\Users\\JONATH~1.COM\\AppData\\Local\\Temp\\tmp00001e00.03 \
+  -TC:\\Users\\JONATH~1.COM\\AppData\\Local\\Temp\\tmp00001e00.04 \
+  -TC:\\Users\\JONATH~1.COM\\AppData\\Local\\Temp\\tmp00001e00.05 \
+  -TC:\\Users\\JONATH~1.COM\\AppData\\Local\\Temp\\tmp00001e00.06 \
   -p24FJ1024GB610 \
   -o \
-  dist/default/production/DevKitUartTests.X.production.elf \
+  dist/default/debug/DevKitUartTests.X.debug.elf \
   -Lc:/program files (x86)/microchip/xc16/v1.36/bin/bin/.. \
   -Lc:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib \
   -Lc:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../support/PIC24E/gld \
@@ -16,19 +23,22 @@ Command:
   -Lc:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../support/dsPIC33C/gld \
   -Lc:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../support/dsPIC33E/gld \
   -Lc:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../support/dsPIC33F/gld \
-  build/default/production/adc.o \
-  build/default/production/buttons.o \
-  build/default/production/lcd.o \
-  build/default/production/lcd_printf.o \
-  build/default/production/leds.o \
-  build/default/production/main.o \
-  build/default/production/rtcc.o \
-  build/default/production/system.o \
-  build/default/production/timer_1ms.o \
-  build/default/production/uart.o \
+  build/default/debug/adc.o \
+  build/default/debug/buttons.o \
+  build/default/debug/lcd.o \
+  build/default/debug/lcd_printf.o \
+  build/default/debug/leds.o \
+  build/default/debug/main.o \
+  build/default/debug/rtcc.o \
+  build/default/debug/system.o \
+  build/default/debug/timer_1ms.o \
+  build/default/debug/uart.o \
   --local-stack \
   --defsym=__MPLAB_BUILD=1 \
-  -Tp24FJ1024GB610.gld.00 \
+  --defsym=__MPLAB_DEBUG=1 \
+  --defsym=__DEBUG=1 \
+  --defsym=__MPLAB_DEBUGGER_PK3=1 \
+  -Tp24FJ1024GB610.gld.07 \
   --stack=16 \
   --check-sections \
   --data-init \
@@ -40,10 +50,10 @@ Command:
   --stackguard=16 \
   --no-force-link \
   --smart-io \
-  -Map=dist/default/production/DevKitUartTests.X.production.map \
+  -Map=dist/default/debug/DevKitUartTests.X.debug.map \
   --report-mem \
   --memorysummary \
-  dist/default/production/memoryfile.xml \
+  dist/default/debug/memoryfile.xml \
   -start-group \
   --library=lega-pic30-elf \
   --library=m-elf \
@@ -61,15 +71,15 @@ c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-pic30-elf.
 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-pic30-elf.a(crt_start_mode_normalda.Leo)
                               (__crt_start_mode_normal)
 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(memset.DA_eo)
-                              build/default/production/timer_1ms.o (_memset)
+                              build/default/debug/timer_1ms.o (_memset)
 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(putchar.DA_eo)
-                              build/default/production/main.o (_putchar)
+                              build/default/debug/main.o (_putchar)
 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(xfiles.DA_eo)
                               c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(putchar.DA_eo) (__Stdout)
 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(fputc.DA_elo)
                               c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(putchar.DA_eo) (_fputc)
 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(printf_cdnopuxX.DAeo)
-                              build/default/production/main.o (__printf_cdnopuxX)
+                              build/default/debug/main.o (__printf_cdnopuxX)
 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(xprintf_cdnopuxX.DAeo)
                               c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(printf_cdnopuxX.DAeo) (___Printf_cdnopuxX)
 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(xputfld_cdnopuxX.DAeo)
@@ -162,15 +172,23 @@ section                    address   length (PC units)   length (bytes) (dec)
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.nbss                        0x800                   0             0x4  (4)
-.data                        0x804                   0            0x88  (136)
-.bss                         0x88c                   0            0x64  (100)
-.data                        0x8f0                   0            0x3c  (60)
-.bss                         0x92c                   0             0xe  (14)
-.data                        0x93a                   0             0x2  (2)
-.bss                         0x93c                   0             0x2  (2)
+reserve_data_0x800           0x800                0x1c            0x1c  (28)
+reserve_data_0x81c           0x81c                 0x2             0x2  (2)
+reserve_data_0x81e           0x81e                 0x2             0x2  (2)
+reserve_data_0x820           0x820                 0x2             0x2  (2)
+reserve_data_0x822           0x822                 0x2             0x2  (2)
+reserve_data_0x824           0x824                 0x4             0x4  (4)
+.nbss                        0x828                   0             0x2  (2)
+reserve_data_0x82a           0x82a                0x26            0x26  (38)
+.nbss                        0x850                   0             0x2  (2)
+.data                        0x852                   0            0x88  (136)
+.bss                         0x8da                   0            0x64  (100)
+.data                        0x93e                   0            0x3c  (60)
+.bss                         0x97a                   0             0xe  (14)
+.data                        0x988                   0             0x2  (2)
+.bss                         0x98a                   0             0x2  (2)
 
-                 Total "data" memory used (bytes):          0x13e  (318) <1%
+                 Total "data" memory used (bytes):          0x18c  (396) 1%
 
 
 Dynamic Memory Usage
@@ -178,37 +196,37 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x93e                              0x76c2  (30402)
+stack                        0x98c                              0x7674  (30324)
 
-                 Maximum dynamic memory (bytes):         0x76c2  (30402)
+                 Maximum dynamic memory (bytes):         0x7674  (30324)
 
 
 External Symbols in Data Memory (by address):
 
-                    0x0804                  __Stdin
-                    0x082c                  __Stdout
-                    0x0854                  __Stderr
-                    0x087c                  __Files
-                    0x0934                  __Aldata
-                    0x093a                  __Size_block
-                    0x093c                  ___curbrk
+                    0x0852                  __Stdin
+                    0x087a                  __Stdout
+                    0x08a2                  __Stderr
+                    0x08ca                  __Files
+                    0x0982                  __Aldata
+                    0x0988                  __Size_block
+                    0x098a                  ___curbrk
 
 External Symbols in Data Memory (by name):
 
-                    0x0934                  __Aldata
-                    0x087c                  __Files
-                    0x093a                  __Size_block
-                    0x0854                  __Stderr
-                    0x0804                  __Stdin
-                    0x082c                  __Stdout
-                    0x093c                  ___curbrk
+                    0x0982                  __Aldata
+                    0x08ca                  __Files
+                    0x0988                  __Size_block
+                    0x08a2                  __Stderr
+                    0x0852                  __Stdin
+                    0x087a                  __Stdout
+                    0x098a                  ___curbrk
 
 External Symbols in Program Memory (by address):
 
                   0x000100                  __resetPRI
                   0x00013c                  __psv_init
-                  0x000152                  __data_init_da
                   0x000152                  __data_init
+                  0x000152                  __data_init_da
                   0x000214                  __OscillatorFail
                   0x00022a                  __AddressError
                   0x000240                  __StackError
@@ -243,8 +261,8 @@ External Symbols in Program Memory (by address):
                   0x000f98                  ___udivsi3
                   0x000fb8                  ___umodsi3
                   0x000fbe                  ___mulp32peds3
-                  0x000fbe                  ___mulsi3
                   0x000fbe                  ___mulp32eds3
+                  0x000fbe                  ___mulsi3
                   0x001016                  ___udivmoddi3
                   0x0010fc                  ___udivdi3
                   0x00110a                  ___umoddi3
@@ -275,7 +293,7 @@ External Symbols in Program Memory (by address):
                   0x001f36                  _BUTTON_IsPressed
                   0x001fa2                  _BUTTON_Enable
                   0x001fda                  _main
-                  0x00205e                  build/default/production/main.o:_TimerEventHandler
+                  0x00205e                  build/default/debug/main.o:_TimerEventHandler
                   0x002068                  _Uart_Enable
                   0x0020a8                  _UART5PutChar
                   0x0020c0                  _UART5GetChar
@@ -357,7 +375,7 @@ External Symbols in Program Memory (by name):
                   0x00039e                  _putchar
                   0x0008e2                  _strchr
                   0x00037a                  _write
-                  0x00205e                  build/default/production/main.o:_TimerEventHandler
+                  0x00205e                  build/default/debug/main.o:_TimerEventHandler
                   0x000e08                  fclose.DA_elo:_closeall
                   0x0003ee                  printf_cdnopuxX.DAeo:_prout
 
@@ -382,17 +400,55 @@ FDEVOPT1         0x0abf2c           0x000002
 
 Linker script and memory map
 
-LOAD build/default/production/adc.o
-LOAD build/default/production/buttons.o
-LOAD build/default/production/lcd.o
-LOAD build/default/production/lcd_printf.o
-LOAD build/default/production/leds.o
-LOAD build/default/production/main.o
-LOAD build/default/production/rtcc.o
-LOAD build/default/production/system.o
-LOAD build/default/production/timer_1ms.o
-LOAD build/default/production/uart.o
+
+reserve_data_0x800
+                    0x0800         0x1c
+                    0x081c                  . = 0x1c
+ *fill*             0x0800         0x1c00
+
+reserve_data_0x81c
+                    0x081c          0x2
+                    0x081e                  . = 0x2
+ *fill*             0x081c          0x200
+
+reserve_data_0x81e
+                    0x081e          0x2
+                    0x0820                  . = 0x2
+ *fill*             0x081e          0x200
+
+reserve_data_0x820
+                    0x0820          0x2
+                    0x0822                  . = 0x2
+ *fill*             0x0820          0x200
+
+reserve_data_0x822
+                    0x0822          0x2
+                    0x0824                  . = 0x2
+ *fill*             0x0822          0x200
+
+reserve_data_0x824
+                    0x0824          0x4
+                    0x0828                  . = 0x4
+ *fill*             0x0824          0x400
+
+reserve_data_0x82a
+                    0x082a         0x26
+                    0x0850                  . = 0x26
+ *fill*             0x082a         0x2600
+LOAD build/default/debug/adc.o
+LOAD build/default/debug/buttons.o
+LOAD build/default/debug/lcd.o
+LOAD build/default/debug/lcd_printf.o
+LOAD build/default/debug/leds.o
+LOAD build/default/debug/main.o
+LOAD build/default/debug/rtcc.o
+LOAD build/default/debug/system.o
+LOAD build/default/debug/timer_1ms.o
+LOAD build/default/debug/uart.o
                     0x0001                  __MPLAB_BUILD = 0x1
+                    0x0001                  __MPLAB_DEBUG = 0x1
+                    0x0001                  __DEBUG = 0x1
+                    0x0001                  __MPLAB_DEBUGGER_PK3 = 0x1
 LOAD pPIC24Fxxx
 LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libfx-elf.a
                     0x801800                  __FBOOT = 0x801800
@@ -430,12 +486,12 @@ LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libfx-elf.a
  *(.handle)
  .handle          0x000204         0x10 jump_table
  *(.isr*)
- .isr.text        0x000214         0x58 build/default/production/system.o
+ .isr.text        0x000214         0x58 build/default/debug/system.o
                   0x000214                  __OscillatorFail
                   0x00022a                  __AddressError
                   0x000240                  __StackError
                   0x000256                  __MathError
- .isr.text        0x00026c         0xa4 build/default/production/timer_1ms.o
+ .isr.text        0x00026c         0xa4 build/default/debug/timer_1ms.o
                   0x00026c                  __T3Interrupt
  .isr             0x000310          0x4 default_isr
                   0x000310                  __DefaultInterrupt
@@ -451,7 +507,7 @@ LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libfx-elf.a
  *(.libm)
  *(.libdsp)
  *(.lib*)
- .libc.write      0x00037a         0x14 build/default/production/lcd_printf.o
+ .libc.write      0x00037a         0x14 build/default/debug/lcd_printf.o
                   0x00037a                  _write
  .libpic30_crt_start_mode
                   0x00038e          0x2 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-pic30-elf.a(crt_start_mode_normalda.Leo)
@@ -586,68 +642,68 @@ __FDEVOPT1
 
 .debug_info       0x000000       0x4a29
  *(.debug_info)
- .debug_info      0x000000        0xb83 build/default/production/adc.o
- .debug_info      0x000b83        0x95e build/default/production/buttons.o
- .debug_info      0x0014e1        0xc53 build/default/production/lcd.o
- .debug_info      0x002134        0x16a build/default/production/lcd_printf.o
- .debug_info      0x00229e        0x4f6 build/default/production/leds.o
- .debug_info      0x002794        0x4c9 build/default/production/main.o
- .debug_info      0x002c5d        0x597 build/default/production/rtcc.o
- .debug_info      0x0031f4        0x267 build/default/production/system.o
- .debug_info      0x00345b        0x8a5 build/default/production/timer_1ms.o
- .debug_info      0x003d00        0xd29 build/default/production/uart.o
+ .debug_info      0x000000        0xb83 build/default/debug/adc.o
+ .debug_info      0x000b83        0x95e build/default/debug/buttons.o
+ .debug_info      0x0014e1        0xc53 build/default/debug/lcd.o
+ .debug_info      0x002134        0x16a build/default/debug/lcd_printf.o
+ .debug_info      0x00229e        0x4f6 build/default/debug/leds.o
+ .debug_info      0x002794        0x4c9 build/default/debug/main.o
+ .debug_info      0x002c5d        0x597 build/default/debug/rtcc.o
+ .debug_info      0x0031f4        0x267 build/default/debug/system.o
+ .debug_info      0x00345b        0x8a5 build/default/debug/timer_1ms.o
+ .debug_info      0x003d00        0xd29 build/default/debug/uart.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x9fa
  *(.debug_abbrev)
- .debug_abbrev    0x000000        0x10c build/default/production/adc.o
- .debug_abbrev    0x00010c         0xf4 build/default/production/buttons.o
- .debug_abbrev    0x000200        0x177 build/default/production/lcd.o
- .debug_abbrev    0x000377         0x4e build/default/production/lcd_printf.o
- .debug_abbrev    0x0003c5         0xf0 build/default/production/leds.o
- .debug_abbrev    0x0004b5         0xe2 build/default/production/main.o
- .debug_abbrev    0x000597        0x118 build/default/production/rtcc.o
- .debug_abbrev    0x0006af         0x92 build/default/production/system.o
- .debug_abbrev    0x000741        0x1a5 build/default/production/timer_1ms.o
- .debug_abbrev    0x0008e6        0x114 build/default/production/uart.o
+ .debug_abbrev    0x000000        0x10c build/default/debug/adc.o
+ .debug_abbrev    0x00010c         0xf4 build/default/debug/buttons.o
+ .debug_abbrev    0x000200        0x177 build/default/debug/lcd.o
+ .debug_abbrev    0x000377         0x4e build/default/debug/lcd_printf.o
+ .debug_abbrev    0x0003c5         0xf0 build/default/debug/leds.o
+ .debug_abbrev    0x0004b5         0xe2 build/default/debug/main.o
+ .debug_abbrev    0x000597        0x118 build/default/debug/rtcc.o
+ .debug_abbrev    0x0006af         0x92 build/default/debug/system.o
+ .debug_abbrev    0x000741        0x1a5 build/default/debug/timer_1ms.o
+ .debug_abbrev    0x0008e6        0x114 build/default/debug/uart.o
 
 .debug_line       0x000000        0xb25
  *(.debug_line)
- .debug_line      0x000000        0x116 build/default/production/adc.o
- .debug_line      0x000116        0x10b build/default/production/buttons.o
- .debug_line      0x000221        0x180 build/default/production/lcd.o
- .debug_line      0x0003a1         0x3c build/default/production/lcd_printf.o
- .debug_line      0x0003dd        0x179 build/default/production/leds.o
- .debug_line      0x000556        0x137 build/default/production/main.o
- .debug_line      0x00068d        0x174 build/default/production/rtcc.o
- .debug_line      0x000801         0xfc build/default/production/system.o
- .debug_line      0x0008fd        0x133 build/default/production/timer_1ms.o
- .debug_line      0x000a30         0xf5 build/default/production/uart.o
+ .debug_line      0x000000        0x116 build/default/debug/adc.o
+ .debug_line      0x000116        0x10b build/default/debug/buttons.o
+ .debug_line      0x000221        0x180 build/default/debug/lcd.o
+ .debug_line      0x0003a1         0x3c build/default/debug/lcd_printf.o
+ .debug_line      0x0003dd        0x179 build/default/debug/leds.o
+ .debug_line      0x000556        0x137 build/default/debug/main.o
+ .debug_line      0x00068d        0x174 build/default/debug/rtcc.o
+ .debug_line      0x000801         0xfc build/default/debug/system.o
+ .debug_line      0x0008fd        0x133 build/default/debug/timer_1ms.o
+ .debug_line      0x000a30         0xf5 build/default/debug/uart.o
 
 .debug_frame      0x000000        0x612
  *(.debug_frame)
- .debug_frame     0x000000         0x84 build/default/production/adc.o
- .debug_frame     0x000084         0x4c build/default/production/buttons.o
- .debug_frame     0x0000d0        0x166 build/default/production/lcd.o
- .debug_frame     0x000236         0x30 build/default/production/lcd_printf.o
- .debug_frame     0x000266         0xa0 build/default/production/leds.o
- .debug_frame     0x000306         0x5a build/default/production/main.o
- .debug_frame     0x000360         0xde build/default/production/rtcc.o
- .debug_frame     0x00043e         0xc0 build/default/production/system.o
- .debug_frame     0x0004fe         0xac build/default/production/timer_1ms.o
- .debug_frame     0x0005aa         0x68 build/default/production/uart.o
+ .debug_frame     0x000000         0x84 build/default/debug/adc.o
+ .debug_frame     0x000084         0x4c build/default/debug/buttons.o
+ .debug_frame     0x0000d0        0x166 build/default/debug/lcd.o
+ .debug_frame     0x000236         0x30 build/default/debug/lcd_printf.o
+ .debug_frame     0x000266         0xa0 build/default/debug/leds.o
+ .debug_frame     0x000306         0x5a build/default/debug/main.o
+ .debug_frame     0x000360         0xde build/default/debug/rtcc.o
+ .debug_frame     0x00043e         0xc0 build/default/debug/system.o
+ .debug_frame     0x0004fe         0xac build/default/debug/timer_1ms.o
+ .debug_frame     0x0005aa         0x68 build/default/debug/uart.o
 
 .debug_str        0x000000        0x180
  *(.debug_str)
- .debug_str       0x000000         0x3e build/default/production/adc.o
- .debug_str       0x00003e         0x3a build/default/production/buttons.o
- .debug_str       0x000078         0x39 build/default/production/lcd.o
- .debug_str       0x0000b1         0x13 build/default/production/leds.o
- .debug_str       0x0000c4          0x9 build/default/production/main.o
- .debug_str       0x0000cd         0x40 build/default/production/rtcc.o
- .debug_str       0x00010d          0xc build/default/production/system.o
- .debug_str       0x000119         0x22 build/default/production/timer_1ms.o
- .debug_str       0x00013b         0x45 build/default/production/uart.o
+ .debug_str       0x000000         0x3e build/default/debug/adc.o
+ .debug_str       0x00003e         0x3a build/default/debug/buttons.o
+ .debug_str       0x000078         0x39 build/default/debug/lcd.o
+ .debug_str       0x0000b1         0x13 build/default/debug/leds.o
+ .debug_str       0x0000c4          0x9 build/default/debug/main.o
+ .debug_str       0x0000cd         0x40 build/default/debug/rtcc.o
+ .debug_str       0x00010d          0xc build/default/debug/system.o
+ .debug_str       0x000119         0x22 build/default/debug/timer_1ms.o
+ .debug_str       0x00013b         0x45 build/default/debug/uart.o
 
 .debug_loc
  *(.debug_loc)
@@ -659,25 +715,25 @@ __FDEVOPT1
                   0x000000        0x32e
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x6a build/default/production/adc.o
+                  0x000000         0x6a build/default/debug/adc.o
  .debug_pubnames
-                  0x00006a         0x39 build/default/production/buttons.o
+                  0x00006a         0x39 build/default/debug/buttons.o
  .debug_pubnames
-                  0x0000a3         0x70 build/default/production/lcd.o
+                  0x0000a3         0x70 build/default/debug/lcd.o
  .debug_pubnames
-                  0x000113         0x1c build/default/production/lcd_printf.o
+                  0x000113         0x1c build/default/debug/lcd_printf.o
  .debug_pubnames
-                  0x00012f         0x53 build/default/production/leds.o
+                  0x00012f         0x53 build/default/debug/leds.o
  .debug_pubnames
-                  0x000182         0x1b build/default/production/main.o
+                  0x000182         0x1b build/default/debug/main.o
  .debug_pubnames
-                  0x00019d         0x7a build/default/production/rtcc.o
+                  0x00019d         0x7a build/default/debug/rtcc.o
  .debug_pubnames
-                  0x000217         0x6a build/default/production/system.o
+                  0x000217         0x6a build/default/debug/system.o
  .debug_pubnames
-                  0x000281         0x69 build/default/production/timer_1ms.o
+                  0x000281         0x69 build/default/debug/timer_1ms.o
  .debug_pubnames
-                  0x0002ea         0x44 build/default/production/uart.o
+                  0x0002ea         0x44 build/default/debug/uart.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -685,25 +741,25 @@ __FDEVOPT1
 .debug_aranges    0x000000         0xf8
  *(.debug_aranges)
  .debug_aranges
-                  0x000000         0x18 build/default/production/adc.o
+                  0x000000         0x18 build/default/debug/adc.o
  .debug_aranges
-                  0x000018         0x18 build/default/production/buttons.o
+                  0x000018         0x18 build/default/debug/buttons.o
  .debug_aranges
-                  0x000030         0x18 build/default/production/lcd.o
+                  0x000030         0x18 build/default/debug/lcd.o
  .debug_aranges
-                  0x000048         0x20 build/default/production/lcd_printf.o
+                  0x000048         0x20 build/default/debug/lcd_printf.o
  .debug_aranges
-                  0x000068         0x18 build/default/production/leds.o
+                  0x000068         0x18 build/default/debug/leds.o
  .debug_aranges
-                  0x000080         0x18 build/default/production/main.o
+                  0x000080         0x18 build/default/debug/main.o
  .debug_aranges
-                  0x000098         0x18 build/default/production/rtcc.o
+                  0x000098         0x18 build/default/debug/rtcc.o
  .debug_aranges
-                  0x0000b0         0x18 build/default/production/system.o
+                  0x0000b0         0x18 build/default/debug/system.o
  .debug_aranges
-                  0x0000c8         0x18 build/default/production/timer_1ms.o
+                  0x0000c8         0x18 build/default/debug/timer_1ms.o
  .debug_aranges
-                  0x0000e0         0x18 build/default/production/uart.o
+                  0x0000e0         0x18 build/default/debug/uart.o
                     0x0000                  WREG0 = 0x0
                     0x0000                  _WREG0 = 0x0
                     0x0002                  WREG1 = 0x2
@@ -2801,7 +2857,7 @@ LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-pic30
 LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a
 END GROUP
-OUTPUT(dist/default/production/DevKitUartTests.X.production.elf elf32-pic30)
+OUTPUT(dist/default/debug/DevKitUartTests.X.debug.elf elf32-pic30)
 LOAD /CW/_FSEC
 LOAD jump_table
 LOAD default_isr
@@ -2810,48 +2866,48 @@ LOAD data_init
 .debug_pubtypes
                   0x0000f8        0x5d9
  .debug_pubtypes
-                  0x0000f8         0xd7 build/default/production/adc.o
+                  0x0000f8         0xd7 build/default/debug/adc.o
  .debug_pubtypes
-                  0x0001cf         0xe0 build/default/production/buttons.o
+                  0x0001cf         0xe0 build/default/debug/buttons.o
  .debug_pubtypes
-                  0x0002af         0xe1 build/default/production/lcd.o
+                  0x0002af         0xe1 build/default/debug/lcd.o
  .debug_pubtypes
-                  0x000390         0x12 build/default/production/lcd_printf.o
+                  0x000390         0x12 build/default/debug/lcd_printf.o
  .debug_pubtypes
-                  0x0003a2         0x63 build/default/production/leds.o
+                  0x0003a2         0x63 build/default/debug/leds.o
  .debug_pubtypes
-                  0x000405         0x5a build/default/production/main.o
+                  0x000405         0x5a build/default/debug/main.o
  .debug_pubtypes
-                  0x00045f         0x62 build/default/production/rtcc.o
+                  0x00045f         0x62 build/default/debug/rtcc.o
  .debug_pubtypes
-                  0x0004c1         0x42 build/default/production/system.o
+                  0x0004c1         0x42 build/default/debug/system.o
  .debug_pubtypes
-                  0x000503         0xca build/default/production/timer_1ms.o
+                  0x000503         0xca build/default/debug/timer_1ms.o
  .debug_pubtypes
-                  0x0005cd        0x104 build/default/production/uart.o
+                  0x0005cd        0x104 build/default/debug/uart.o
 
 __c30_signature
                   0x0006d1         0xfc
  __c30_signature
-                  0x0006d1          0x6 build/default/production/adc.o
+                  0x0006d1          0x6 build/default/debug/adc.o
  __c30_signature
-                  0x0006d7          0x6 build/default/production/buttons.o
+                  0x0006d7          0x6 build/default/debug/buttons.o
  __c30_signature
-                  0x0006dd          0x6 build/default/production/lcd.o
+                  0x0006dd          0x6 build/default/debug/lcd.o
  __c30_signature
-                  0x0006e3          0x6 build/default/production/lcd_printf.o
+                  0x0006e3          0x6 build/default/debug/lcd_printf.o
  __c30_signature
-                  0x0006e9          0x6 build/default/production/leds.o
+                  0x0006e9          0x6 build/default/debug/leds.o
  __c30_signature
-                  0x0006ef          0x6 build/default/production/main.o
+                  0x0006ef          0x6 build/default/debug/main.o
  __c30_signature
-                  0x0006f5          0x6 build/default/production/rtcc.o
+                  0x0006f5          0x6 build/default/debug/rtcc.o
  __c30_signature
-                  0x0006fb          0x6 build/default/production/system.o
+                  0x0006fb          0x6 build/default/debug/system.o
  __c30_signature
-                  0x000701          0x6 build/default/production/timer_1ms.o
+                  0x000701          0x6 build/default/debug/timer_1ms.o
  __c30_signature
-                  0x000707          0x6 build/default/production/uart.o
+                  0x000707          0x6 build/default/debug/uart.o
  __c30_signature
                   0x00070d          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-pic30-elf.a(crt0_extended24.o)
  __c30_signature
@@ -2918,119 +2974,121 @@ __c30_signature
                   0x0007c7          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(divmoddi3.daeo)
 
 epmp_cs1            0x20000          0x4
- epmp_cs1           0x20000          0x4 build/default/production/lcd.o
+ epmp_cs1           0x20000          0x4 build/default/debug/lcd.o
 
-.nbss               0x0800          0x4
- .nbss              0x0800          0x2 build/default/production/lcd.o
- .nbss              0x0802          0x2 build/default/production/timer_1ms.o
+.nbss               0x0828          0x2
+ .nbss              0x0828          0x2 build/default/debug/lcd.o
 
-.data               0x0804         0x88
- .data              0x0804         0x88 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(xfiles.DA_eo)
-                    0x0804                  __Stdin
-                    0x082c                  __Stdout
-                    0x0854                  __Stderr
-                    0x087c                  __Files
+.nbss               0x0850          0x2
+ .nbss              0x0850          0x2 build/default/debug/timer_1ms.o
 
-.bss                0x088c         0x64
- .bss               0x088c         0x64 build/default/production/timer_1ms.o
+.data               0x0852         0x88
+ .data              0x0852         0x88 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(xfiles.DA_eo)
+                    0x0852                  __Stdin
+                    0x087a                  __Stdout
+                    0x08a2                  __Stderr
+                    0x08ca                  __Files
 
-.data               0x08f0         0x3c
- .data              0x08f0         0x22 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(xlitob.DA_eo)
- .data              0x0912         0x1a c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(xprintf_cdnopuxX.DAeo)
+.bss                0x08da         0x64
+ .bss               0x08da         0x64 build/default/debug/timer_1ms.o
 
-.bss                0x092c          0xe
- .bss               0x092c          0x8 build/default/production/main.o
- .bss               0x0934          0x4 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(malloc.DA_eo)
-                    0x0934                  __Aldata
- .bss               0x0938          0x2 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(fclose.DA_elo)
+.data               0x093e         0x3c
+ .data              0x093e         0x22 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(xlitob.DA_eo)
+ .data              0x0960         0x1a c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(xprintf_cdnopuxX.DAeo)
 
-.data               0x093a          0x2
- .data              0x093a          0x2 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(malloc.DA_eo)
-                    0x093a                  __Size_block
+.bss                0x097a          0xe
+ .bss               0x097a          0x8 build/default/debug/main.o
+ .bss               0x0982          0x4 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(malloc.DA_eo)
+                    0x0982                  __Aldata
+ .bss               0x0986          0x2 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(fclose.DA_elo)
 
-.bss                0x093c          0x2
- .bss               0x093c          0x2 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-pic30-elf.a(brkda.Lelo)
-                    0x093c                  ___curbrk
+.data               0x0988          0x2
+ .data              0x0988          0x2 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(malloc.DA_eo)
+                    0x0988                  __Size_block
+
+.bss                0x098a          0x2
+ .bss               0x098a          0x2 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-pic30-elf.a(brkda.Lelo)
+                    0x098a                  ___curbrk
 
 .config_ALTVREF
                   0x0abf2c          0x2
  .config_ALTVREF
-                  0x0abf2c          0x2 build/default/production/system.o
+                  0x0abf2c          0x2 build/default/debug/system.o
 
 .config_BTSWP     0x0abf28          0x2
- .config_BTSWP    0x0abf28          0x2 build/default/production/system.o
+ .config_BTSWP    0x0abf28          0x2 build/default/debug/system.o
 
 .config_DNVPEN    0x0abf24          0x2
  .config_DNVPEN
-                  0x0abf24          0x2 build/default/production/system.o
+                  0x0abf24          0x2 build/default/debug/system.o
 
 .config_WDTCLK    0x0abf20          0x2
  .config_WDTCLK
-                  0x0abf20          0x2 build/default/production/system.o
+                  0x0abf20          0x2 build/default/debug/system.o
 
 .config_FCKSM     0x0abf1c          0x2
- .config_FCKSM    0x0abf1c          0x2 build/default/production/system.o
+ .config_FCKSM    0x0abf1c          0x2 build/default/debug/system.o
 
 .config_IESO      0x0abf18          0x2
- .config_IESO     0x0abf18          0x2 build/default/production/system.o
+ .config_IESO     0x0abf18          0x2 build/default/debug/system.o
 
 .config_BSLIM     0x0abf10          0x2
- .config_BSLIM    0x0abf10          0x2 build/default/production/system.o
+ .config_BSLIM    0x0abf10          0x2 build/default/debug/system.o
 
 .ivt._OscillatorFail
                   0x000004          0x2
  .ivt._OscillatorFail
-                  0x000004          0x2 build/default/production/system.o
+                  0x000004          0x2 build/default/debug/system.o
 
 .ivt._AddressError
                   0x000006          0x2
  .ivt._AddressError
-                  0x000006          0x2 build/default/production/system.o
+                  0x000006          0x2 build/default/debug/system.o
 
 .ivt._StackError
                   0x00000a          0x2
  .ivt._StackError
-                  0x00000a          0x2 build/default/production/system.o
+                  0x00000a          0x2 build/default/debug/system.o
 
 .ivt._MathError
                   0x00000c          0x2
  .ivt._MathError
-                  0x00000c          0x2 build/default/production/system.o
+                  0x00000c          0x2 build/default/debug/system.o
 
 .ivt._T3Interrupt
                   0x000024          0x2
  .ivt._T3Interrupt
-                  0x000024          0x2 build/default/production/timer_1ms.o
+                  0x000024          0x2 build/default/debug/timer_1ms.o
 
 .const              0x91ce         0x2e load address 0x0011ce  
- .const             0x91ce         0x22 build/default/production/main.o
- .const             0x91f0          0xc build/default/production/rtcc.o
+ .const             0x91ce         0x22 build/default/debug/main.o
+ .const             0x91f0          0xc build/default/debug/rtcc.o
 
 .text             0x0011fc        0xc6e
- .text            0x0011fc        0x3fe build/default/production/rtcc.o
+ .text            0x0011fc        0x3fe build/default/debug/rtcc.o
                   0x0011fc                  _RTCC_BuildTimeGet
                   0x00141a                  _RTCC_Initialize
                   0x0014e8                  _RTCC_TimeGet
                   0x0015e2                  _BSP_RTCC_Initialize
                   0x0015ee                  _BSP_RTCC_TimeGet
- .text            0x0015fa        0x3f2 build/default/production/lcd.o
+ .text            0x0015fa        0x3f2 build/default/debug/lcd.o
                   0x0015fa                  _LCD_Initialize
                   0x00170c                  _LCD_PutString
                   0x001746                  _LCD_PutChar
                   0x0017f0                  _LCD_ClearScreen
                   0x0019ac                  _LCD_CursorEnable
- .text            0x0019ec        0x2b0 build/default/production/leds.o
+ .text            0x0019ec        0x2b0 build/default/debug/leds.o
                   0x0019ec                  _LED_On
                   0x001a3e                  _LED_Off
                   0x001a90                  _LED_Toggle
                   0x001b90                  _LED_Get
                   0x001c4a                  _LED_Enable
- .text            0x001c9c         0xea build/default/production/adc.o
+ .text            0x001c9c         0xea build/default/debug/adc.o
                   0x001c9c                  _ADC_ReadPercentage
                   0x001cd2                  _ADC_Read10bit
                   0x001d26                  _ADC_ChannelEnable
                   0x001d42                  _ADC_SetConfiguration
- .text            0x001d86         0xe4 build/default/production/timer_1ms.o
+ .text            0x001d86         0xe4 build/default/debug/timer_1ms.o
                   0x001d86                  _TIMER_CancelTick
                   0x001dbc                  _TIMER_RequestTick
                   0x001e24                  _TIMER_SetConfiguration
@@ -3039,15 +3097,15 @@ epmp_cs1            0x20000          0x4
  .dinit           0x001e6a         0xcc data_init
 
 .text             0x001f36        0x1a0
- .text            0x001f36         0xa4 build/default/production/buttons.o
+ .text            0x001f36         0xa4 build/default/debug/buttons.o
                   0x001f36                  _BUTTON_IsPressed
                   0x001fa2                  _BUTTON_Enable
- .text            0x001fda         0x8e build/default/production/main.o
+ .text            0x001fda         0x8e build/default/debug/main.o
                   0x001fda                  _main
-                  0x00205e                  build/default/production/main.o:_TimerEventHandler
- .text            0x002068         0x66 build/default/production/uart.o
+                  0x00205e                  build/default/debug/main.o:_TimerEventHandler
+ .text            0x002068         0x66 build/default/debug/uart.o
                   0x002068                  _Uart_Enable
                   0x0020a8                  _UART5PutChar
                   0x0020c0                  _UART5GetChar
- .text            0x0020ce          0x8 build/default/production/system.o
+ .text            0x0020ce          0x8 build/default/debug/system.o
                   0x0020ce                  _SYS_Initialize

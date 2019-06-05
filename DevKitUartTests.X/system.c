@@ -42,7 +42,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // ****************************************************************************
 // ****************************************************************************
 // FSEC
-#pragma config BWRP = OFF               //  (Boot Segment may be written)
+#pragma config BWRP = OFF               // (Boot Segment may be written)
 #pragma config BSS = DISABLED           // Boot Segment Code-Protect Level bits (No Protection (other than BWRP))
 #pragma config BSEN = OFF               // Boot Segment Control bit (No Boot Segment)
 #pragma config GWRP = OFF               // General Segment Write-Protect bit (General Segment may be written)
